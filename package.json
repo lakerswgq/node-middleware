@@ -1,0 +1,15 @@
+{
+  "name": "julien-middleware",
+  "version": "1.0.0",
+  "description": "use middleawre to build nodejs server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "middleware"
+  ],
+  "author": "julien",
+  "license": "ISC"
+}
