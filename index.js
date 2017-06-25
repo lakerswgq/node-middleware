@@ -1,11 +1,15 @@
 const http = require("http");
 const url = require("url");
 
-
 class Server {
     constructor(){
         this.server = http.createServer();
         this.middlewares = [];
+        
+        // default middleare
+
+        this.use(require("./middlewares/sendFile"));
+        this.use(require("./middlewares/query"));
         
         this.handleRequest();
     }

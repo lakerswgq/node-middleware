@@ -4,8 +4,6 @@ let Server = require("./index");
 
 let app = new Server();
 
-
-app.use(require("./middlewares/sendFile"));
 app.use(function (req, res, next) {
     req.name = "julien";
     next();
@@ -13,6 +11,7 @@ app.use(function (req, res, next) {
 
 app.use("/", function (req, res){
     console.log("name:", req.name);
+    console.log("query:", req.query);
     res.renderFile(path.resolve(__dirname, "./views/index.html"));
 })
 
