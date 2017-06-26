@@ -70,10 +70,15 @@ class Server {
     use(path, handle) {
         if (typeof path === "function") { // middleware for all request
             handle = path;
-            this.middlewares.push({
-                path: "",
-                handle: handle
-            });
+            if (handle.length === 4){ // error handle middleware
+                this.handleError = handle;
+            }
+            else {
+                this.middlewares.push({
+                    path: "",
+                    handle: handle
+                });
+            }
         }
         else {
             this.middlewares.push({
@@ -85,6 +90,7 @@ class Server {
     }
 
     handleError (error, req, res, next){
+        console.log("got a error:", error);
         res.writeHead(500);
         res.write(error.toString());
         res.end();
