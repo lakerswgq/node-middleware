@@ -1,5 +1,5 @@
 {
-  "name": "julien-middleware",
+  "name": "julien-server",
   "version": "1.0.0",
   "description": "use middleawre to build nodejs server",
   "main": "index.js",
