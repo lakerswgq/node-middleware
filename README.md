@@ -12,6 +12,8 @@ let Server = require("julien-server");
 
 let app = new Server();
 
+
+// global middleware
 app.use(function (req, res, next){
 	req.name = "julien";
 	next();
@@ -34,6 +36,17 @@ app.use("/query", function (req, res){
 		query: req.query
 	}));
 	res.end();
+})
+
+// throw error in middleware
+app.use("/error",function (req, res, next){
+	next(new Error("this is an error"));
+})
+
+
+// add error handle middleware
+app.use(function (error, req, res, next){
+	res.end("custom error handle");
 })
 
 app.listen(8000);
