@@ -8,6 +8,9 @@ function sendFile(req, res, next){
         console.log("header:", header);
         try {
             let readStream = fs.createReadStream(filepath);
+            readStream.on("error", function (error) {
+                next(error);
+            })
             res.writeHead(200, {
                 "content-disposition": header
             });
