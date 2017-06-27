@@ -9,9 +9,15 @@ npm install julien-server
 ```
 const path = require("path");
 let Server = require("julien-server");
+let bodyParser = require("body-parser");
 
 let app = new Server();
 
+
+// use connect middleware
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
 
 // global middleware
 app.use(function (req, res, next){
@@ -38,6 +44,12 @@ app.use("/query", function (req, res){
 	res.end();
 })
 
+app.use("/post", function (req, res){
+	// req.body is set by body-parser middleware
+	console.log(req.body);
+	res.end("handle post")
+})
+
 // throw error in middleware
 app.use("/error",function (req, res, next){
 	next(new Error("this is an error"));
@@ -51,3 +63,4 @@ app.use(function (error, req, res, next){
 
 app.listen(8000);
 ```
+第三方中间件一般也可以用，试了body-parser。
