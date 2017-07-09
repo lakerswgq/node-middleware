@@ -63,4 +63,4 @@ app.use(function (error, req, res, next){
 
 app.listen(8000);
 ```
-第三方中间件一般也可以用，试了body-parser。
+connect第三方中间件一般也可以用，试了body-parser。
